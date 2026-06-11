@@ -73,6 +73,7 @@ class LogLikelihoodBase:
             likelihood_config = {}
         self.config = likelihood_config
         self.config.setdefault('morpher', 'GridInterpolator')
+        self.config.setdefault('morpher_config', {'grid_interpolation_method': 'linear'})
         self.source_wise_interpolation = self.pdf_base_config.get('source_wise_interpolation', False)
 
         # Base model: no variations of any settings

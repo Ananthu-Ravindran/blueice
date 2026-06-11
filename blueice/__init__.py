@@ -7,5 +7,6 @@ from .source import *
 from .exceptions import *
 # from .inference import *   # Not needed, all the inference methods are added to LogLikelihood
 from .parallel import *
+from . import pdf_morphers_cubic  # registers CubicSplineInterpolator in MORPHERS
 
 __version__ = '1.2.1'
