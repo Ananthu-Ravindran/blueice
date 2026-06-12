@@ -4,15 +4,27 @@ Fixes the C0 kink problem in GridInterpolator (linear RegularGridInterpolator).
 Shape preservation:  pchip is monotone between each pair of anchors.  If all
 anchor values are non-negative, the interpolated values are guaranteed non-negative.
 
-Activation in YAML
-------------------
+Activation
+----------
+In alea, set it in the likelihood term's YAML config:
+
     likelihood_terms:
-      - name: sr2_far_wire
+      - name: likelihood_name
         ...
         likelihood_config:
           morpher: CubicSplineInterpolator
           morpher_config:
             extrapolate: false   # default
+
+In plain blueice (no alea), pass the equivalent ``likelihood_config`` dict
+directly when constructing the likelihood, e.g.:
+
+    likelihood_config = {
+        ...
+        'morpher': 'CubicSplineInterpolator',
+        'morpher_config': {'extrapolate': False},  # default
+    }
+    ll = UnbinnedLogLikelihood(pdf_base_config, likelihood_config=likelihood_config)
 
 Config keys (morpher_config)
 ----------------------------
