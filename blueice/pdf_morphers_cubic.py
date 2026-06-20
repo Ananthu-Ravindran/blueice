@@ -36,7 +36,7 @@ extrapolate : bool, default False
 import numpy as np
 from scipy.interpolate import PchipInterpolator
 
-from .pdf_morphers import GridInterpolator, MORPHERS
+from .pdf_morphers import GridInterpolator
 from .utils import inherit_docstring_from
 
 
@@ -157,6 +157,3 @@ class CubicSplineInterpolator(GridInterpolator):
             return current
 
         return interpolator
-
-
-MORPHERS['CubicSplineInterpolator'] = CubicSplineInterpolator
